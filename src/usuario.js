@@ -3,26 +3,28 @@ import { Link } from "react-router-dom";
 
 export default function Usuario() {
 
-  function cadastrarUsuario(e) {
+  const handleSubmit = (e) =>  {
     e.preventDefault()
-    console.log('cadastrou o usuario')
-    alert('Enviou nome:, ${this.state.value}');
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+
+    console.log(data)
+
+    alert("Nome inserido: " + data.nome)
   }
 
 
   return (
     <div>
       <h1>Usuário</h1>
-      <form onSubmit={cadastrarUsuario}>
-
-        <label>
-          Nome:
-          <input type="text"/>
-        </label>
-        <input type="submit" value="Enviar formulário!" />
-
+        <div>
+        <form onSubmit={handleSubmit}>
+          <input type="text" name="nome" placeholder="nome" />
+        
+          <button type="submit">Enviar Formulario</button>
       </form>
-
+      </div>
 
 
       <h1></h1>
